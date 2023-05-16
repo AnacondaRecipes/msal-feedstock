@@ -1,5 +1,5 @@
 {% set name = "msal" %}
-{% set version = "1.20.0" %}
+{% set version = "1.22.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,24 +7,30 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 78344cd4c91d6134a593b5e3e45541e666e37b747ff8a6316c3668dd1e6ab6b2
+  sha256: 8a82f5375642c1625c89058018430294c109440dce42ea667d466c2cab520acd
 
 build:
-  noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  skip: True # [py<36]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
-    - python >=3.6
+    - setuptools
+    - python
+    - wheel
     - pip
   run:
-    - python >=3.6
+    - python
     - requests >=2.0.0,<3
     - pyjwt >=1.0.0,<3
-    - cryptography >=0.6,<41
+    - cryptography >=0.6,<43
 
 test:
+  requires:
+    - pip
+  commands:
+    - pip check
   imports:
     - msal
     - msal.oauth2cli
@@ -35,7 +41,6 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: Microsoft Authentication Library (MSAL) for Python makes it easy to authenticate to Azure Active Directory
-
   description: |
     The MSAL library for Python enables your app to access the Microsoft Cloud by supporting
     authentication of users with Microsoft Azure Active Directory accounts and Microsoft Accounts
