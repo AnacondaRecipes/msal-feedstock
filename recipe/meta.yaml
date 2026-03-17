@@ -1,5 +1,5 @@
 {% set name = "msal" %}
-{% set version = "1.34.0" %}
+{% set version = "1.35.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 76ba83b716ea5a6d75b0279c0ac353a0e05b820ca1f6682c0eb7f45190c43c2f
+  sha256: 70cac18ab80a053bff86219ba64cfe3da1f307c74b009e2da57ef040eb1b5656
 
 build:
   number: 0
@@ -29,6 +29,7 @@ requirements:
     - pymsalruntime >=0.14,<0.19  # [py>36 and win]
     - pymsalruntime >=0.17,<0.19  # [py>38 and osx]
     - pymsalruntime >=0.18,<0.19  # [py>38 and linux]
+
 test:
   requires:
     - pip
