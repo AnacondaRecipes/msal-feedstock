@@ -26,9 +26,9 @@ requirements:
     - pyjwt >=1.0.0,<3
     - cryptography >=2.5,<49
   run_constrained:
-    - pymsalruntime >=0.14,<0.19  # [py>36 and win]
-    - pymsalruntime >=0.17,<0.19  # [py>38 and osx]
-    - pymsalruntime >=0.18,<0.19  # [py>38 and linux]
+    - pymsalruntime >=0.14,<0.21  # [py>36 and win]
+    - pymsalruntime >=0.17,<0.21  # [py>38 and osx]
+    - pymsalruntime >=0.18,<0.21  # [py>38 and linux]
 
 test:
   requires:
